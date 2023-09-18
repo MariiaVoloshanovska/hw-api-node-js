@@ -2,8 +2,6 @@ const { Schema, model } = require("mongoose");
 
 const { handleValidateError, runUpdateValidators } = require("./hooks");
 
-const emailRegexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
 const userSchema = new Schema({
   password: {
     type: String,
@@ -18,6 +16,13 @@ const userSchema = new Schema({
     type: String,
     enum: ["starter", "pro", "business"],
     default: "starter",
+  },
+  verify: {
+    type: Boolean,
+    default: false,
+  },
+  verificationCode: {
+    type: String,
   },
   avatarURL: String,
   token: String,
